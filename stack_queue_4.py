@@ -43,7 +43,7 @@ int solution(int bridge_length, int weight, vector<int> truck_weights) {
 '''
 def solution(bridge_length, weight, truck_weights):
     time = 0
-    q = [0] * bridge_length # 다리의 길이/ 
+    q = [0] * bridge_length # 다리의 길이만큼 q의 리스트 만들기
     
     while q:
         time += 1
