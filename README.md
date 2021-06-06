@@ -17,7 +17,7 @@
 
 <h4>:three:stack_queue_3</h4>
 <details>
-  - not yet
+  - 프로그래머스 기능개발
 </details>
 
 
