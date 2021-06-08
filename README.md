@@ -28,4 +28,8 @@
 </details>
 
 
+<h4>:one:exhaustive_binary_search_1.py</h4>
+<details>
+  - 완전탐색, 이진탐색
+</details>
 
