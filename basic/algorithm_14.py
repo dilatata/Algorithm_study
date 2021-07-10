@@ -23,14 +23,19 @@ def solution(n, m):
     answer = []
     if n < m:
         if m%n == 0:
-            answer.append(n, m)
+            answer.append(n)
+            answer.append(m)
+            
         else:
-            answer.append(1, n*m)
+            answer.append(1)
+            answer.append(n*m)
     else:
         if n%m == 0:
-            answer.append(m,n)
+            answer.append(m)
+            answer.append(n)
         else:
-            answer.append(1, n*m)
+            answer.append(1)
+            answer.append(n*m)
     return answer
 
-print(solution(3,12))
+# print(solution(2,5))
