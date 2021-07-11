@@ -18,8 +18,8 @@ def solution(n):
 
 
 
-n = 118372
-print(solution(n))
+# n = 118372
+# print(solution(n))
 
 # ls = []
 # for i in str(n):
