@@ -25,7 +25,7 @@
     - BAEKJOON 10816 숫자카드2
 </details>
   
-<h4>BFS_DFS_01</h4>
+<h4>BFS_DFS</h4>
 <details>
   :one:exhaustive_binary_search_1.py<br>
     - 너비우선탐색, 깊이우선탐색 <br>
