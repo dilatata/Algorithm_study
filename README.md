@@ -29,5 +29,9 @@
 <details>
   :one:exhaustive_binary_search_1.py<br>
     - 너비우선탐색, 깊이우선탐색 <br>
+  :two:exhaustive_binary_search_2.py <br>
+    - BAEKJOON 1260 DFS와 BFS<br>
+  :three:<br>
+    - BAEKJOON 2606 바이러스<br>
 </details>
 
