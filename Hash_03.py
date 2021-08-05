@@ -36,12 +36,14 @@ def solution(participant, completion):
 
 
 
+# ========= 확인
+
 participant = ["leo", "kiki", "eden"]	
 completion = ["eden", "kiki"]	
 # print(solution(participant, completion))
 
 
-#이것 저것 연습
+# ========= 이것 저것 연습
 answer = '' 
 count = 0 
 list=[]
