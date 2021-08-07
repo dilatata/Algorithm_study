@@ -34,4 +34,14 @@
   :three: BFS_DFS_03.py <br>
     - BAEKJOON 2606 바이러스<br>
 </details>
+  
+<h4>HASH</h4>
+<details>
+  :one:Hash_01.py <br>
+    - Hash <br>
+  :two:Hash_02.py <br>
+    - BAEKJOON 15829 Hashing<br>
+  :three: HashS_03.py <br>
+    - 프로그래머스 완주하지 못한 선수<br>
+</details>
 
