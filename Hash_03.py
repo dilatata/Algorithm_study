@@ -18,8 +18,8 @@ completion은
 hash() 사용해서 지우고
 남은 participant return 하도록 만들기 
 '''
-# 단 한명만 남기 때문에
-def solution(participant, completion): 
+# 풀이 1
+def solution1(participant, completion): 
     answer = '' 
     count = 0 
     dic = {} 
@@ -34,6 +34,17 @@ def solution(participant, completion):
     answer = dic[count] 
     return answer
 
+# 풀이 2
+def solution2(s,c):
+
+    s.sort()
+    c.sort()
+
+    for par, com in zip(s, c) :
+        if par != com :
+            return par
+
+    return s[-1]
 
 
 # ========= 확인
