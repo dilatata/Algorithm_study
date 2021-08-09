@@ -28,6 +28,29 @@ phone_book	return
 첫 번째 전화번호, “12”가 두 번째 전화번호 “123”의 접두사입니다. 따라서 답은 false입니다.
 '''
 
-def solution(phone_book):
+
+# 다른 풀이 1 
+def solution1(phone_book):
     answer = True
+    phone_book.sort()
+    for i in range(len(phone_book)-1):
+        if len(phone_book[i]) < len(phone_book[i+1]):
+            # i번의 길이가 i+1번의 길이보다 짧을 경우
+            if phone_book[i + 1][:len(phone_book[i])] == phone_book[i]:
+                # i+1번의 처음부터 i번의 길이까지의 값이 i번쨰의 값과 같다면
+                # 접두사인 경우이므로
+                answer = False
+                # false 를 반환
+                break
     return answer
+
+
+
+# 다른 풀이 2 
+def solution2(phoneBook):
+    phoneBook = sorted(phoneBook)
+
+    for p1, p2 in zip(phoneBook, phoneBook[1:]):
+        if p2.startswith(p1):
+            return False
+    return True
