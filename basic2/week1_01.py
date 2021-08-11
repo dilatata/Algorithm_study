@@ -1,5 +1,6 @@
 '''
-조이스틱으로 알파벳 이름을 완성하세요. 맨 처음엔 A로만 이루어져 있습니다.
+조이스틱으로 알파벳 이름을 완성하세요. 
+맨 처음엔 A로만 이루어져 있습니다.
 ex) 완성해야 하는 이름이 세 글자면 AAA, 네 글자면 AAAA
 
 조이스틱을 각 방향으로 움직이면 아래와 같습니다.
@@ -24,8 +25,23 @@ name	return
 "JEROEN"	56
 "JAN"	23
 '''
-
+# 다른 답안1
 def solution(name):
     answer = 0
+    min_move = len(name) - 1
+    next = 0
+    
+    for i, char in enumerate(name):
+        # enumerate : index와 원소 동시 접근
+        answer += min(ord(char) - ord('A'), ord('Z') - ord(char) + 1)
+        # ord() : 아스키 코드변환
+        
+        next = i + 1
+        while next < len(name) and name[next] == 'A':
+            next += 1
+        
+        min_move = min(min_move, i + i + len(name) - next)
+    answer += min_move
+
     return answer
     
