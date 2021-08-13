@@ -22,7 +22,41 @@ array	commands	return
 [1, 5, 2, 6, 3, 7, 4]를 4번째부터 4번째까지 자른 후 정렬합니다. [6]의 첫 번째 숫자는 6입니다.
 [1, 5, 2, 6, 3, 7, 4]를 1번째부터 7번째까지 자릅니다. [1, 2, 3, 4, 5, 6, 7]의 세 번째 숫자는 3입니다.
 '''
+# 나의 답안
 
 def solution(array, commands):
     answer = []
+    for a in commands:
+        arr = array[a[0]-1:a[1]]
+        arr.sort()
+        answer.append(arr[a[2]-1])
     return answer
+
+
+
+array = [1, 5, 2, 6, 3, 7, 4]
+commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]
+
+print(solution(array, commands))
+
+
+
+''' 
+def solution2(array, commands):
+    answer = []
+    for a in commands:
+        print(a)
+        # for n, m, i in a:
+        #     arr = array[n:m]
+        #     answer = arr[i]
+    return answer
+for a in commands:
+        # print(a)
+        # print(a[0], type(a[0]))
+        arr = array[a[0]-1:a[1]]
+        arr.sort()
+        print(arr)
+        print(arr[a[2]-1])
+        # answer = arr[a[2]-1]
+        # print(answer)
+'''
