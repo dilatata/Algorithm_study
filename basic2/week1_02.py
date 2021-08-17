@@ -1,10 +1,12 @@
 '''
 문제
-태균이는 지금 태권도 겨루기 중이다. 지금은 상대에게 지고 있지만 지금부터 진심으로 경기하여 빠르게 역전을 노리려 한다.
+태균이는 지금 태권도 겨루기 중이다. 
+지금은 상대에게 지고 있지만 지금부터 진심으로 경기하여 빠르게 역전을 노리려 한다.
 
 태균이가 현재 할 수 있는 연속 발차기는 두가지가 있다.
 
-A는 현재 점수만큼 점수를 얻을 수 있는 엄청난 연속 발차기이다. 하지만 상대 역시 3점을 득점하는 위험이 있다.
+A는 현재 점수만큼 점수를 얻을 수 있는 엄청난 연속 발차기이다. 
+하지만 상대 역시 3점을 득점하는 위험이 있다.
 B는 1점을 얻는 연속 발차기이다.
 현재 태균이의 점수 S와 상대의 점수 T가 주어질 때, S와 T가 같아지는 최소 연속 발차기 횟수를 구하는 프로그램을 만드시오.
 
@@ -30,3 +32,80 @@ B는 1점을 얻는 연속 발차기이다.
 5
 25
 '''
+
+# bfs 구현 예제 : 경로 찾기
+# bfs 코드에서 queue는 list 봐 queue모듈을 사용해 구현하는 것이 효율적
+def bfs(graph, start_node):
+    visit = list()
+    queue = list()
+
+    queue.append(start_node)
+
+    while queue:
+        node = queue.pop(0)
+        if node not in visit:
+            visit.append(node)
+            queue.extend(graph[node])
+
+    return visit
+
+
+# 다른 사람 답안
+
+from collections import deque
+
+def bfs(S, T):
+    q = deque()
+    q.append((S, T, 0))
+    check = [-1]*(200)
+    while q:
+        node, t, c = q.popleft()
+        if node <= t and check[node] == -1:
+            q.append((node*2, t+3, c+1))
+            q.append((node+1, t, c+1))
+            if node == t:
+                return c
+
+C = int(input())
+for _ in range(C):
+    S, T = map(int, input().split())
+    # print(bfs(S, T))
+
+
+
+# 망
+def solution(S, T):
+    s = S
+    t = T
+    c = 0
+    while s != t and s < t:
+        if t-(s+1) > t+3-(s*2) and s*2 <= t+3:
+            s = s * 2
+            t = t + 3
+            c = c + 1
+            print(s,t,c)
+        else:
+            s = s +1
+            c = c + 1
+            print(s,t,c)
+    return c 
+
+# print(solution2(10,20))
+
+
+'''
+while s != t:
+    if 3 < s and 2*s <= t + 3:
+        s = s + s
+        t = t + 3
+        c = c + 1
+        print(s,t,c)
+    else:
+        s = s + 1
+        c = c + 1
+        print(s,t,c)
+    if s == t or s > t:
+        break 
+'''
+
+
