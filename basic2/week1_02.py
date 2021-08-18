@@ -69,7 +69,7 @@ def bfs(S, T):
 C = int(input())
 for _ in range(C):
     S, T = map(int, input().split())
-    # print(bfs(S, T))
+    print(bfs(S, T))
 
 
 
