@@ -15,6 +15,25 @@ n	computers	return
 3	[[1, 1, 0], [1, 1, 1], [0, 1, 1]]	1
 '''
 
+
+# 다른사람 답안
 def solution(n, computers):
     answer = 0
+    visited = [False for i in range(n)] # 방문점 확인을 위해서
+    for com in range(n):
+        if visited[com] == False: # 방문한 적 없으면 방문하기
+            DFS(n, computers, com, visited)
+            answer += 1 # DFS로 최대한 컴퓨터들을 방문하고 빠져나오게 되면 하나의 네트워크의 라인을 모두 True 값으로 바꿈
     return answer
+
+def DFS(n, computers, com, visited):
+    visited[com] = True
+    for connect in range(n): #노드 수만큼 반복
+        if connect != com and computers[com][connect] == 1: # 연결된 컴퓨터와 비교
+            if visited[connect] == False:
+                DFS(n, computers, connect, visited) # 재귀함수
+
+n=3
+computers=[[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+
+print(solution(n,computers))
