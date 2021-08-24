@@ -15,3 +15,15 @@ brown	yellow	return
 def solution(brown, yellow):
     answer = []
     return answer
+
+
+
+
+# 다른사람 답안
+def solution(brown, yellow):
+    s = brown + yellow
+    for i in range(s,2,-1):
+        if s%i ==0:
+            a = s//i
+            if yellow == (i-1)*(a-2):
+                return[i,a]
