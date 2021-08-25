@@ -97,3 +97,19 @@ for i in range(1, n-1): # if 도시 수가 4- > 2번도시 3번도시가격과 �
     # print('-------', tot_cost)
 
 print(tot_cost)
+
+
+
+# 다른사람 답안
+
+n = int(input())
+roads = list(map(int, input().split())) 
+costs = list(map(int, input().split()))
+
+res = 0
+m = costs[0]
+for i in range(n-1):
+    if costs[i] < m:
+        m = costs[i]
+    res += m*roads[i]
+print(res)
