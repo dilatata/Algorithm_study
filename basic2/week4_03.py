@@ -27,3 +27,25 @@
 예제 출력 1 
 200
 '''
+
+# 예시
+
+k,n = map(int,input().split())
+a=[int(input())for i in range(k)]
+
+a.sort()
+
+low = 1
+high = max(a)
+
+while high >= low:
+    m = (low + high)//2
+    c = 0
+    for i in a:
+        c += i//m
+    if c >= n: # 랜선이 n 이상이면 low의 범위 변경
+        low = m +1
+    else: # 랜선이 n 미만이면 high의 범위 변경
+        high = m -1
+
+print(high) # 랜선의 최대길이 출력
