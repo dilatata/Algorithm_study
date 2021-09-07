@@ -19,3 +19,32 @@ begin	target	words	return
 "hit"	"cog"	["hot", "dot", "dog", "lot", "log", "cog"]	4
 "hit"	"cog"	["hot", "dot", "dog", "lot", "log"]	0
 '''
+
+# 다른 답안
+
+def solution(begin, target, words):
+    answer = 0
+    stacks = [begin]
+    visited = {i:0 for i in words} # 이미 검사했던 단어를 다시 검사하지 않도록 하기 위해서
+    if target not in words:
+        return 0
+    while stacks:
+        stack = stacks.pop()
+        if stack == target:
+            return answer
+        
+        for word in words:
+            for i in words:
+                for i in range(len(word)):
+                    copy = list(word)
+                    copy_front = list(stack)
+                    copy[i] = 0
+                    copy_front[i] = 0
+                    if copy == copy_front:
+                        if visited[word] != 0: # visited가 1이라면 이미 검사했던 단어
+                            continue
+                        visited[word] = 1 # visited 가 0이면 해당 단어의 visited값을 1로 변경
+                        stacks.append(word)
+                        break
+        answer += 1 # Depth 1추가
+    return answer
