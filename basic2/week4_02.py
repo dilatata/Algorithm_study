@@ -19,7 +19,21 @@ begin	target	words	return
 "hit"	"cog"	["hot", "dot", "dog", "lot", "log", "cog"]	4
 "hit"	"cog"	["hot", "dot", "dog", "lot", "log"]	0
 '''
-# 도전
+
+'''
+이어지는 길
+2개 같은 것끼리 이어짐
+같은 자리, 같은 값 => 1 -> 합쳤을때 2이면 answer +1
+
+hit
+hot
+dot / dog
+lot / log
+      cog
+'''
+
+
+# 도전1
 def solution(begin, target, words):
     answer = 0
     begin_lst = list(begin) 
@@ -42,7 +56,39 @@ def solution(begin, target, words):
     return answer
 
     # if 단어 길이가 3 이상이면 성립 X -> for 문에 range(len(words)) 넣어서 
-    # 
+
+
+# 도전2
+def solution(begin, target, words):
+    answer = 0
+    begin_lst = list(begin) 
+    # print(begin_lst) # h, i, t
+    if target not in words: # list에 없는 단어는 반환 X
+        return 0 
+    else:
+        # return 1 # 
+        for word in words:
+            # print(word)
+            word_lst = list(word) 
+            # print(word_lst) # ['h', 'i', 't']/['h', 'o', 't']/['d', 'o', 't'],, 반복문 통해서 나옴
+            if not word_lst[0] == begin_lst[0] or word_lst[1] == begin_lst[1] or word_lst[2] == begin_lst[2]: # 여기가 꼬였어
+            count=0
+            for i in range(len(word_lst)):
+                if  word_lst[i] == begin_lst[i]:
+                    count += 1
+                    # print(count)
+                    if count ==2:
+                        answer += 1
+                        print(word_lst)
+                        begin_lst = word_lst
+                        # words.pop(word) # TypeError: 'str' object cannot be interpreted as an integer
+                        words.remove(word)
+                        # print('words:',words, 'answer:', answer)
+        # print(words)
+    return answer
+
+    # if 단어 길이가 3 이상이면 성립 X -> for 문에 range(len(words)) 넣어서 
+    # 뭔가 더 단단히 꼬였다.
 
 begin="hit"
 target="cog"
