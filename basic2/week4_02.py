@@ -19,10 +19,59 @@ begin	target	words	return
 "hit"	"cog"	["hot", "dot", "dog", "lot", "log", "cog"]	4
 "hit"	"cog"	["hot", "dot", "dog", "lot", "log"]	0
 '''
-
-# 다른 답안
-
+# 도전
 def solution(begin, target, words):
+    answer = 0
+    begin_lst = list(begin) 
+    # print(begin_lst) # h, i, t
+    if target not in words: # list에 없는 단어는 반환 X
+        return 0 
+    else:
+        # return 1 # 
+        for word in words:
+            # print(word)
+            word_lst = list(word) 
+            # print(word_lst) # ['h', 'i', 't']/['h', 'o', 't']/['d', 'o', 't'],, 반복문 통해서 나옴
+            if not word_lst[0] == begin_lst[0] or word_lst[1] == begin_lst[1] or word_lst[2] == begin_lst[2]:
+                answer += 1
+                begin_lst = word_lst
+                # words.pop(word) # TypeError: 'str' object cannot be interpreted as an integer
+                words.remove(word)
+                print('words:',words, 'answer:', answer)
+        # print(words)
+    return answer
+
+    # if 단어 길이가 3 이상이면 성립 X -> for 문에 range(len(words)) 넣어서 
+    # 
+
+begin="hit"
+target="cog"
+words=["hot", "dot", "dog", "lot", "log", "cog"] # 1
+print(solution(begin, target, words))
+
+
+# 참고 코드1
+def solution(begin, target, words):
+    answer = 0
+    queue = [begin]
+    while True:
+        tmp_q = []
+        for word_1 in queue:
+            if word_1 == target:
+                return answer
+            for word_2_idx in range(len(words)-1, -1, -1): # 해당 방식 사용하면 index오류 없이 pop()사용 가능
+                word_2 = words[word_2_idx]
+                difference = sum([x != y for x, y in zip(word_1, word_2)])
+                if difference == 1:
+                    tmp_q.append(words.pop(word_2_idx))
+        if not tmp_q:
+            return 0
+        queue = tmp_q
+        answer += 1
+
+
+# 참고 코드 2
+def solution3(begin, target, words):
     answer = 0
     stacks = [begin]
     visited = {i:0 for i in words} # 이미 검사했던 단어를 다시 검사하지 않도록 하기 위해서
