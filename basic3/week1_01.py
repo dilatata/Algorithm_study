@@ -48,35 +48,35 @@ B
 
 # 다른 코드 분석
 import sys
-input = sys.stdin.readline
+input = sys.stdin.readline # input() 대신 사용 -> input()보다 빠른 연산가능
  
 n = int(input())
 table = []
-for i in range(n):
+for i in range(n): # table list 생성
     temp = list(map(int, input().split()))
-    table.append(temp)
+    table.append(temp) 
  
 dx = [-1, 1, 0, 0, 0]
 dy = [0, 0, 0, -1, 1]
 ans = 1234
-for f in range(1<<n):
+for f in range(1<<n): # 왼쪽으로 1비트 밀때마다 두 배씩 늘어난다
     a=[]
     for i in range(n):
         a.append(table[i][:])
     cnt = 0
  
     for i in range(n):
-        if f & (1<<i):
-            cnt += 1
-            for k in range(5):
+        if f & (1<<i): # i 번째 스위치를 누른 경우
+            cnt += 1 # cnt 1 추가
+            for k in range(5): # 5회 반복
                 nx = i + dx[k]
                 ny = 0 + dy[k]
                 if 0 <= nx < n and 0 <= ny < n:
                     a[ny][nx] = not a[ny][nx]
  
-    for i in range(1, n):
-        for j in range(n):
-            if a[i-1][j]:
+    for i in range(1, n): # y 좌표
+        for j in range(n): # x 좌표
+            if a[i-1][j]: #바로 윗 전등이 켜져있다면 스위치를 눌러줘야 한다
                 for k in range(5):
                     nx = j + dx[k]
                     ny = i + dy[k]
@@ -86,12 +86,12 @@ for f in range(1<<n):
  
  
     can = True
-    for i in range(n):
-        if a[-1][i] == True:
-            can = False
-            break
+    for i in range(n): # n번 반복
+        if a[-1][i] == True: # a[-1][i] 존재하면
+            can = False # can False 대입
+            break # 반복문 빠져나오기
  
-    if can:
+    if can: # 위에서 can 값 True 면
         ans = min(cnt, ans)
  
-print(ans if ans != 1234 else -1)
+print(ans if ans != 1234 else -1) # can False 면 -1
