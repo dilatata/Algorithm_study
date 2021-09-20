@@ -25,3 +25,27 @@ N가지의 동전 중 1원짜리 동전은 항상 있기 때문에, 금액을 �
 예제 출력 1 
 100001
 '''
+
+# 도전
+
+tot = int(input())
+k = int(input())
+coins = list(input().split())
+# print(tot, k, coin, type(coin)) # 1000000001 2 ['10000', '1'] <class 'list'>
+# for i in coin:
+    # print(int(i), type(i))
+    # 10000 <class 'str'> 1 <class 'str'>
+    # ch_i = int(i)
+    # print(ch_i, type(ch_i))
+    # 10000 <class 'int'> 1 <class 'int'>
+answer = 0
+for coin in coins:
+    coin = int(coin)
+    if coin <= tot:
+        ans=tot//coin 
+        # print('ans:', ans)
+        tot=tot-ans*coin
+        answer += ans
+    
+print(answer)
+            
