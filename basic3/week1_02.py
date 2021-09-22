@@ -30,7 +30,7 @@ N가지의 동전 중 1원짜리 동전은 항상 있기 때문에, 금액을 �
 
 tot = int(input())
 k = int(input())
-coins = list(input().split())
+coins = list(map(int,input().split()))
 # print(tot, k, coin, type(coin)) # 1000000001 2 ['10000', '1'] <class 'list'>
 # for i in coin:
     # print(int(i), type(i))
@@ -38,9 +38,13 @@ coins = list(input().split())
     # ch_i = int(i)
     # print(ch_i, type(ch_i))
     # 10000 <class 'int'> 1 <class 'int'>
+# coins = coins.sort(reverse=True) # 최소 coin 수 만들기 위해서 큰 금액 먼저 계산
+# TypeError: 'NoneType' object is not iterable 문제 해결하기
+# print(coins, type(coins))
+
 answer = 0
 for coin in coins:
-    coin = int(coin)
+    # coin = int(coin) # map 사용해서 필요 없어짐
     if coin <= tot:
         ans=tot//coin 
         # print('ans:', ans)
