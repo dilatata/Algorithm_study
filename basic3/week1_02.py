@@ -32,18 +32,23 @@ tot = int(input())
 k = int(input())
 coins = list(map(int,input().split()))
 # print(tot, k, coin, type(coin)) # 1000000001 2 ['10000', '1'] <class 'list'>
-# for i in coin:
-    # print(int(i), type(i))
-    # 10000 <class 'str'> 1 <class 'str'>
-    # ch_i = int(i)
-    # print(ch_i, type(ch_i))
-    # 10000 <class 'int'> 1 <class 'int'>
+print(coins)
 # coins = coins.sort(reverse=True) # 최소 coin 수 만들기 위해서 큰 금액 먼저 계산
+# coins = sorted(coins)
+coins.sort(reverse=True)
+
+'''
+list.sort()
+sorted(list)
+차이에대한 정의 정확하게 하기!
+'''
+# print(coins)
 # TypeError: 'NoneType' object is not iterable 문제 해결하기
 # print(coins, type(coins))
 
 answer = 0
 for coin in coins:
+    # print(coin, type(coin))
     # coin = int(coin) # map 사용해서 필요 없어짐
     if coin <= tot:
         ans=tot//coin 
