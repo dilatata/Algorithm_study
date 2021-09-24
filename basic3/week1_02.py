@@ -38,8 +38,8 @@ print(coins)
 coins.sort(reverse=True)
 
 '''
-list.sort()
-sorted(list)
+list.sort() : 원본 리스트의 순서 변환 , 새로운 변수에 대입 필요 X
+sorted(list) : 정렬된 새로운 리스트 반환 , 사용시 새로운 변수에 대입
 차이에대한 정의 정확하게 하기!
 '''
 # print(coins)
