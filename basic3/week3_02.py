@@ -73,11 +73,13 @@ n	build_frame	result
 
 def isValid(answer):
     for x,y,a in answer:
+        # 기둥인 경우
         if a==0:
             if (x,y-1,0) in answer or (x-1,y,1) in answer or (x,y,1) in answer or y==0:
                 continue
             else:
                 return False
+        # 보인 경우
         if a==1:
             if (x,y-1,0) in answer or (x+1,y-1,0) in answer or ((x-1,y,1) in answer and (x+1,y,1) in answer):
                 continue
@@ -86,13 +88,13 @@ def isValid(answer):
     return True
 
 def solution(n, build_frame):
-    answer = set()
+    answer = set() # list가 아닌 set 사용시 시간 단축
     for x,y,a,b in build_frame:
         if b==0:
             answer.remove((x,y,a))
             if not isValid(answer):
                 answer.add((x,y,a))
-        else:
+        else: # 추가
             answer.add((x,y,a))
             if not isValid(answer):
                 answer.remove((x,y,a))
