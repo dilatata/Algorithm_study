@@ -78,22 +78,30 @@ b는 구조물을 설치할 지, 혹은 삭제할 지를 나타내며 0:삭제 1
 ex [[0,0,0,1],[2,0,0,1],[4,0,0,1],[0,1,1,1],[1,1,1,1],[2,1,1,1],[3,1,1,1],[2,0,0,0],[1,1,1,0],[2,2,0,1]]
 [0, 0, 0, 1] :  (0,0) 좌표 기둥 설치 -> [1,0,0] return에 포함되는
 [1,1,1,1] / [1,1,1,0] : (1,1) 좌표 보 설치 / 삭제 -> 설치 후 삭제함 -> b값에 따라서 리스트에 적제, 삭제를 하는 기능이 필요
+[2,0,0,1] / [2,0,0,0] : (2,0) 좌표 기둥 설치 / 삭제 -> 설치 후 삭제함
+
+return 하는 배열은 x좌표 기준으로 오름차순 정렬하며, x좌표가 같을 경우 y좌표 기준으로 오름차순 정렬
+x, y좌표가 모두 같은 경우 기둥이 보보다 앞에 오도록
+-> sort()
+
 '''
 
 # 다른코드분석
 
-def isValid(answer):
+def isValid(answer): # 기둥과 보가 존재할 수 있는 경우를 True, False 반환
     for x,y,a in answer:
         # 기둥인 경우
         if a==0:
-            if (x,y-1,0) in answer or (x-1,y,1) in answer or (x,y,1) in answer or y==0:
+            if (x,y-1,0) in answer or (x-1,y,1) in answer or (x,y,1) in answer or y==0: 
                 continue
+            # 이전 y축에 기둥이 있거나, 이전 x축에 보가 있거나, 현제 축에 보가 있거나, y축이 0인 경우 -> true return 
             else:
                 return False 
         # 보인 경우 /  이경우 else: 로 넘어가도 무관할듯
         if a==1:
             if (x,y-1,0) in answer or (x+1,y-1,0) in answer or ((x-1,y,1) in answer and (x+1,y,1) in answer):
                 continue
+            # 이전 y축에 기둥이 있거나, 이다음 x축과 이전 y축에 기둥이 있거나, 이전 x축에 보가있고 다음x축에도 보가 있는 경우 -> true return
             else:
                 return False
     return True
@@ -101,15 +109,15 @@ def isValid(answer):
 def solution(n, build_frame):
     answer = set() # list가 아닌 set 사용시 시간 단축
     for x,y,a,b in build_frame:
-        if b==0:
+        if b==0: # 삭제
             answer.remove((x,y,a))
-            if not isValid(answer):
-                answer.add((x,y,a))
-        else: # 추가
+            if not isValid(answer): # isValid(answer) = True 일 때, not isValid(answer) = False
+                answer.add((x,y,a)) # 무시하고 설치하는 경우
+        else: # 설치
             answer.add((x,y,a))
             if not isValid(answer):
                 answer.remove((x,y,a))
 
     answer = [list(i) for i in answer]
-    answer.sort(key=lambda x:(x[0],x[1],x[2]))
+    answer.sort(key=lambda x:(x[0],x[1],x[2])) # 인덱스에 따라서 오름차순하는 lambda식
     return answer
