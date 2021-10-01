@@ -18,3 +18,30 @@ nums	result
 2. 소수 확인
 
 '''
+
+
+# 소수 확인
+def prime_num(num):
+    if num==0 or num==1:
+        return False
+    else:
+        for n in range(2, (num//2)+1):
+            if num%n == 0:
+                return False
+        
+        return True
+
+
+# 원소 3개 합 경우 만들기
+def solution(nums):
+    num=0
+    answer = 0
+    
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            for k in range(j + 1, len(nums)):
+                num = nums[i] + nums[j] + nums[k] 
+                if prime_num(num) == True:
+                    answer += 1
+
+    return answer
