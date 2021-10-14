@@ -12,7 +12,7 @@ def solution(numbers):
                 if numbers[i]+numbers[k] not in answer:
                     answer.append(numbers[i]+numbers[k])
     answer.sort()
-    return(answer)
+    return answer
 
 # solution(numbers)
 # 성공 ! 
