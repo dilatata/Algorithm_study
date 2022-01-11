@@ -29,8 +29,9 @@ result
 2-2. 작은 수 중 가장 큰 수
 '''
 
-sizes= [[60, 50], [30, 70], [60, 30], [80, 40]]
+sizes= [[14, 4], [19, 6], [6, 16], [18, 7], [7, 11]]
 
+# 1. 
 def solution(sizes):
     b = []
     s = []
@@ -49,4 +50,16 @@ def solution(sizes):
     answer = max(b)*max(s)
     return answer
 
-print(solution(sizes))
+# print(solution(sizes))
+
+# solution2 return 값에 모두 넣기
+'''
+for i in sizes 라고 할 때 i 속의 큰 수와 작은 수 중 큰 값을 찾는 것
+max(max(i))
+max(min(i))
+'''
+def solution2(sizes):
+    return max(max(i) for i in sizes) * max(min(i) for i in sizes)
+
+# print(solution2(sizes))
+
