@@ -48,4 +48,13 @@ def solution(a, b):
         # print(a[i], b[i], answer)
     return answer 
 
-print(solution(a, b))
+# print(solution(a, b))
+
+# zip 사용
+def solution2(a, b):
+    return sum([x*y for x, y in zip(a,b)])
+
+# print(solution2(a, b))
+
+# lambda 
+solution = lambda x, y: sum(a*b for a, b in zip(x, y))
