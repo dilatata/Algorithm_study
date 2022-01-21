@@ -33,9 +33,22 @@ def solution(n):
         if n%i == 1:
             a.append(i)
 
-    print(a)
+    # print(a)
     answer = min(a)
     return answer
 
-print(solution(n))
+# print(solution(n))
+
+#2. 
+def solution2(n):
+    for i in range(2,n,1):
+        if n%i == 1:
+            answer = i
+            break
+        else:
+            continue
+    # print(answer)
+    return answer
+
+# print(solution2(n))
 
