@@ -45,7 +45,7 @@ def solution2(n):
         if n%i == 1:
             answer = i
             break
-        else:
+        else: # 없어도 코드 실행 가능하지만 없을때 테스트1 실행 시간이 더 길어짐
             continue
     # print(answer)
     return answer
