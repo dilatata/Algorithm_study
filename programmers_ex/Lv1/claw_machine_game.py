@@ -57,5 +57,27 @@ def solution(board, moves):
                     del doll[i-1]
                     break
     return answer
+# print(solution(board, moves))
 
-print(solution(board, moves))
+#다른 풀이 
+def solution_a(board, moves):
+    stacklist = []
+    answer = 0
+
+    for i in moves:
+        for j in range(len(board)):
+            if board[j][i-1] != 0:
+                stacklist.append(board[j][i-1])
+                board[j][i-1] = 0
+# if문을 사용해서 for 사용 줄이기
+# stacklist 에 2개 이상 쌓이면 가장 마지막에 넣은 2개의 중복을 체크
+                if len(stacklist) > 1:
+                    if stacklist[-1] == stacklist[-2]:
+                        stacklist.pop(-1)
+                        stacklist.pop(-1)
+                        # pop 사용 대신
+                        # stacklist[-2:]=[] 사용도 가능
+                        answer += 2     
+                break
+
+    return answer
