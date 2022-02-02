@@ -44,7 +44,7 @@ result
 2. 매칭된 결과가 문자이면 dict 에서 숫자 찾고 숫자는 그대로 출력
 3. answer 문자열로 숫자가 쌓이도록
 '''
-s = "2three45sixseven"
+# s = "2three45sixseven"
 
 def solution(s):
     dict = {}
@@ -68,4 +68,31 @@ def solution(s):
     # return answer
     return int(answer)
 
-print(solution(s))
+# print(solution(s))
+
+s="2onefivethree7"
+
+# 다른 사람 코드
+
+# dict 생성 {str:str,,,,}
+num_dic = {"zero":"0", "one":"1", "two":"2", "three":"3", "four":"4", "five":"5", "six":"6", "seven":"7", "eight":"8", "nine":"9"}
+
+def solution2(s):
+    answer = s
+    for key, value in num_dic.items():
+        # print(key,value)
+        answer = answer.replace(key, value) # replace("찾을값", "변경값",[count])
+        # print(answer)
+    return int(answer)
+
+# print(solution2(s))
+
+def solution3(s):
+    dict = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+    for i in range(len(dict)): # 0~9 까지의 숫자를 반복하면서
+        s = s.replace(dict[i], str(i)) # dict의 값과 같은 값을 숫자로 변경해서 넣기
+
+    return int(s)
+
+# print(solution3(s))
