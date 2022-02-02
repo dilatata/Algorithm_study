@@ -38,7 +38,34 @@ result
 234567
 123
 '''
+# logic 생각하기
+'''
+1. 영단어 숫자 매칭용 dict 생성 {'영단어': 숫자, ,,,}
+2. 매칭된 결과가 문자이면 dict 에서 숫자 찾고 숫자는 그대로 출력
+3. answer 문자열로 숫자가 쌓이도록
+'''
+s = "2three45sixseven"
 
 def solution(s):
-    answer = 0
-    return answer
+    dict = {}
+    numbers=['zero','one','two','three','four','five','six','seven','eight','nine']
+    for i in range(10):
+        dict[numbers[i]]=i
+    # print(dict) # {'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9} 
+
+    answer = ''
+    eng = ''
+    for i in s:
+        if i.isdigit(): # type 이 숫자인 경우
+            answer = answer + i
+        elif i.isalpha(): # type 이 알파벳인 경우
+            eng = eng + i
+
+            if eng in dict.keys(): # dict에 key 값으로 들어간 영단어와 같은 값이 완성되면
+                answer = answer + str(dict[eng])
+                eng = '' # eng 초기화
+    print(type(answer))
+    # return answer
+    return int(answer)
+
+print(solution(s))
