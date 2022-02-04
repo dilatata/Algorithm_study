@@ -15,8 +15,41 @@ arr1, arr2는 길이 n인 정수 배열로 주어진다.
 출력 형식
 원래의 비밀지도를 해독하여 '#', 공백으로 구성된 문자열 배열로 출력하라.
 '''
+#입출력 예
+'''
+매개변수	값
+n	5
+arr1	[9, 20, 28, 18, 11]
+arr2	[30, 1, 21, 17, 28]
+출력	["#####","# # #", "### #", "# ##", "#####"]
+
+매개변수	값
+n	6
+arr1	[46, 33, 33 ,22, 31, 50]
+arr2	[27 ,56, 19, 14, 14, 10]
+출력	["######", "### #", "## ##", " #### ", " #####", "### # "]
+'''
+n = 5
+arr1 = [9, 20, 28, 18, 11]
+arr2 = [30, 1, 21, 17, 28]
 
 
 def solution(n, arr1, arr2):
     answer = []
+    arr1_bin = []
+    arr2_bin = []
+    for i in range(n):
+        arr1_bin.append(bin(arr1[i])[2:])
+        arr2_bin.append(bin(arr2[i])[2:])
+        arr1_bin[i] = ('0' * (n-len(arr1_bin[i]))) + arr1_bin[i]
+        arr2_bin[i] = ('0' * (n-len(arr2_bin[i]))) + arr2_bin[i]
+    
+        tmp = ''
+        for p in range(n):
+            if arr1_bin[i][p] == '1' or arr2_bin[i][p] == '1':
+                tmp += '#'
+            elif arr1_bin[i][p] == '0' and arr2_bin[i][p] == '0':
+                tmp += ' '
+        answer.append(tmp)
+        
     return answer
