@@ -48,13 +48,14 @@
     5. * , # 의 경우 elif 로 조건 넣기
     6. 반복문 끝나면 리스트값 합 반환 
 '''
+dartResult = "1S*2T*3S"
 
 def solution(dartResult):
     n=''
     score = []
     for i in dartResult:
         if i.isnumeric():
-            n+=1
+            n += i
         elif i == "S":
             n = int(n)**1
             score.append(n)
@@ -71,8 +72,12 @@ def solution(dartResult):
             if len(score) > 1:
                 score[-2] = score[-2]*2
                 score[-1] = score[-1]*2
+            else:
+                score[-1] = score[-1]*2
         elif i=='#':
             score[-1] = score[-1]*-1
 
     answer = sum(score)
     return answer
+
+print(solution(dartResult))
