@@ -38,7 +38,41 @@
 6   	1T2D3D#	    -4  	13 + 22 + 32 * (-1)
 7   	1D2S3T*	    59	    12 + 21 * 2 + 33 * 2
 '''
+# logic 생각하기
+'''
+1. 숫자 변수 n, 값을 모을 리스트 score
+    2-1) 숫자로 시작한다면 숫자 값 확인하고 n에 넣기
+    2-2) 영역 확인
+    3. 영역에 따라서 제곱 하기 **1/**2/**3
+    4. 얻은 값 리스트에 넣고 n 리셋
+    5. * , # 의 경우 elif 로 조건 넣기
+    6. 반복문 끝나면 리스트값 합 반환 
+'''
 
 def solution(dartResult):
-    answer = 0
+    n=''
+    score = []
+    for i in dartResult:
+        if i.isnumeric():
+            n+=1
+        elif i == "S":
+            n = int(n)**1
+            score.append(n)
+            n=''
+        elif i == "D":
+            n = int(n)**2
+            score.append(n)
+            n=''
+        elif i == "T":
+            n = int(n)**3
+            score.append(n)
+            n=''
+        elif i == "*":
+            if len(score) > 1:
+                score[-2] = score[-2]*2
+                score[-1] = score[-1]*2
+        elif i=='#':
+            score[-1] = score[-1]*-1
+
+    answer = sum(score)
     return answer
