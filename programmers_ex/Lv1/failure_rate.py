@@ -22,6 +22,31 @@ N	stages	result
 4	[4,4,4,4,4]	[4,1,2,3]
 '''
 
+N = 5
+stages = [2, 1, 2, 6, 2, 4, 3, 3]
+
+
 def solution(N, stages):
+    l = []
+    a = len(stages)
+    for i in range(1, N+1): # 1~ N 번
+        c = 0 # 해당 레벨에서 실패할 사람의 수
+        for j in range(len(stages)): # 도전한 사람들 중에서 확인하기
+            if stages[j] == i: # 해당 스테이지에서 실패하면
+                c += 1 
+        if c == 0:
+            l.append(0)
+        else:
+            l.append(c/a)
+        a = a-c # 실패한 사람 수 줄이기
+    
+    b = sorted(l, reverse=True) # 내림차순 리스트 만들기
     answer = []
+
+    for i in range(len(b)): # 내림차순으로 만든 리스트와 
+        answer.append(l.index(b[i])+1) # b[i]값을 같는 인덱스 +1 로 해당 라운드 answer에 넣기
+        l[l.index(b[i])] = 2 # 확인된 값은 2로 중복되지 않게 없애기
+
     return answer
+
+print(solution(N, stages))
