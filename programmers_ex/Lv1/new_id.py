@@ -24,7 +24,62 @@ no	    new_id	                        result
 예4	    "123_.def"	                    "123_.def"
 예5	    "abcdefghijklmn.p"	            "abcdefghijklmn"
 '''
+from hashlib import new
+
+
+new_id=  "=.="
+
 
 def solution(new_id):
-    answer = ''
+    sp= ["-", "_", "."]
+    step1 = new_id.lower()
+    step2=[]
+    step3=[]
+    for i in step1:
+        if i.isalpha():
+            step2.append(i)
+        elif i.isdigit():
+            step2.append(i)
+        elif i in sp:
+            step2.append(i)
+    # print(step2)
+
+    for i in step2:
+        if i == ".":
+            if len(step3) == 0:
+                step3.append(i)
+            elif len(step3) > 0 and step3[-1] != ".":
+                step3.append(i)
+        else:
+            step3.append(i)
+    # print(step3)
+
+    # step4
+    if step3[0] == ".":
+        step3.pop(0)
+    # print(step3, len(step3))
+
+    # step5
+    step5=[]
+    step5 = ' '.join(step3).split()
+
+    # step6
+    if len(step5) > 15:
+        step5 = step5[0:15]
+    print(step5)
+
+    while step5[-1] == ".":
+        step5.pop()
+    # print(step6)
+
+    #step7
+    while len(step5) < 3:
+        if step5[-1] == ".":
+            step5.pop()
+        else:
+            step5 += step5[-1]
+
+    answer = "".join(step5)
     return answer
+
+print(solution(new_id))
