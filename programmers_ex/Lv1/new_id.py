@@ -27,9 +27,9 @@ no	    new_id	                        result
 from hashlib import new
 
 
-new_id=  "=.="
+# new_id=  "z-+.^."
 
-
+# list 만들어서 풀기
 def solution(new_id):
     sp= ["-", "_", "."]
     step1 = new_id.lower()
@@ -61,16 +61,20 @@ def solution(new_id):
 
     # step5
     step5=[]
-    step5 = ' '.join(step3).split()
+    if len(step3) < 1:
+        step5.append("a")
+    else:
+        step5 = step3
+    
+    print(step5, len(step5))
 
     # step6
     if len(step5) > 15:
         step5 = step5[0:15]
-    print(step5)
+    # print(step5)
 
     while step5[-1] == ".":
         step5.pop()
-    # print(step6)
 
     #step7
     while len(step5) < 3:
@@ -78,8 +82,9 @@ def solution(new_id):
             step5.pop()
         else:
             step5 += step5[-1]
+    
 
     answer = "".join(step5)
     return answer
 
-print(solution(new_id))
+# print(solution(new_id))
