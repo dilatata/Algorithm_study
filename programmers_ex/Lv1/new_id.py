@@ -25,16 +25,21 @@ no	    new_id	                        result
 예5	    "abcdefghijklmn.p"	            "abcdefghijklmn"
 '''
 from hashlib import new
+from operator import indexOf
 
 
-# new_id=  "z-+.^."
+new_id= "=.="
 
-# list 만들어서 풀기
-def solution(new_id):
+# list 만들어서 풀기 
+def solution2(new_id):
     sp= ["-", "_", "."]
+    
+    # step1
     step1 = new_id.lower()
     step2=[]
     step3=[]
+
+    #step2
     for i in step1:
         if i.isalpha():
             step2.append(i)
@@ -44,6 +49,7 @@ def solution(new_id):
             step2.append(i)
     # print(step2)
 
+    # step3
     for i in step2:
         if i == ".":
             if len(step3) == 0:
@@ -85,6 +91,48 @@ def solution(new_id):
     
 
     answer = "".join(step5)
+    return answer
+
+# print(solution(new_id))
+
+
+# 문자열로 바로 풀기
+def solution(new_id):
+    sp= ["-", "_", "."]
+    answer=""
+    # 1
+    new_id = new_id.lower()
+
+    # 2
+    for i in new_id:
+        if i.isalpha() or i.isdigit() or i in sp:
+            answer += i
+    
+    # 3 ".." -> "."
+    while ".." in answer:
+        answer = answer.replace("..", ".")
+
+    # 4 
+    while len(answer) > 1 and answer[0] == ".":
+        answer = answer[1:]
+    
+    while len(answer) > 0 and answer[-1] ==".":
+        answer = answer[:-1]
+
+    # 5
+    if answer == "":
+        answer += "a"
+
+    # 6 
+    if len(answer) > 15:
+        answer = answer[:15]
+        while answer[-1] == ".":
+            answer = answer[:-1]
+
+    # 7
+    while len(answer) < 3:
+        answer += answer[-1]
+
     return answer
 
 # print(solution(new_id))
