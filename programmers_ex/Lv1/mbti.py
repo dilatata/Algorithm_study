@@ -1,6 +1,6 @@
 def solution(survey, choices):
     answer = ''
-    survey_q = dict()
+
     R = 0
     T = 0
     C = 0
@@ -11,7 +11,6 @@ def solution(survey, choices):
     N = 0
     
     for i in range(len(survey)):
-        survey_q[survey[i]] = choices[i]
         
         if survey[i] == 'RT':
             if choices[i] - 4 < 0:
